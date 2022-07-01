@@ -1,11 +1,91 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        #dung{
+            border-radius: 50%;
+        }
+        #diep{
+            border-radius: 50%;
+        }
+    </style>
 </head>
+
 <body>
 
+<img class="anhdung" src="img/dung.jpg" id="dung" style="width: 200px; height: 200px; position: absolute; top: 0px; left: 0px">
+<img src="img/diep.jpg" id="diep" style="width: 200px; height:250px; position: absolute; top: 00px; left:1000px">
+<table>
+<tr><td><button onclick="moveRight()">Move Right</button></td></tr>
+<tr><td><button onclick="moveLeft()">Move Left</button></td></tr>
+<tr><td><button onclick="moveUp()">Move Up</button></td></tr>
+<tr><td><button onclick="moveDown()">Move Down</button></td></tr>
+</table>
+<script>
+    let image = document.getElementById('dung');
+    let image2 =document.getElementById('diep');
+    window.addEventListener("keydown", moveWithKeyboard);
+    function moveRight() {
+        image.style.left = parseInt(image.style.left) + 10 +'px';
+    }
+    function moveLeft() {
+        image.style.left = parseInt(image.style.left) - 10 +'10px';
+    }
+    function moveUp() {
+        image.style.top = parseInt(image.style.top) - 10 +'px';
+    }
+    function moveDown() {
+        image.style.top = parseInt(image.style.top) + 10 +'px';
+    }
+    function moveWithKeyboard(evt) {
+        let dunga = parseInt(image.style.left);
+        let dungb = parseInt(image.style.top);
+        let diepa = parseInt(image2.style.left);
+        let diepb = parseInt(image2.style.top);
 
+        let dung1 = dunga + parseInt(image.style.width);
+        let dung2 = dungb + parseInt(image.style.height);
+        let diep1 = diepa + parseInt(image2.style.width);
+        let diep2 = diepb + parseInt(image2.style.height);
+
+        let x = dung1 >= diepa && diep1 >= dunga;
+        let y = dung2 >= diepb && diep2 >= dungb;
+
+        if (x && y) {
+            if (dung1 == diepa || dung2 == diepb || diep1 == dunga) {
+                moveLeft();
+            }
+            if (dung2 == diepb) {
+                moveUp();
+            }
+            if (diep1 == dunga) {
+                moveRight();
+            }
+            if (diep2 == dungb) {
+                moveDown();
+            }
+            alert('HiHi Bé xinh quá. Cho Dũng làm quen nhé.');
+            alert('Iu Iu ^_^');
+            console.log(image2)
+        } else {
+            switch (evt.keyCode){
+                case 37:
+                    moveLeft();
+                    break;
+                case 39:
+                    moveRight();
+                    break;
+                case 38:
+                    moveUp();
+                    break;
+                case 40:
+                    moveDown();
+                    break;
+            }
+        }}
+</script>
 </body>
 </html>
