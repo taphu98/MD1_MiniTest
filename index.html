@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Tuổi em</h1>
+<input id="em" type="text">
+<button onclick="nhap()">Kết quả</button>
+
+
+<script>
+    function nhap(){
+        let tuoiem = +document.getElementById('em').value;
+        let tuoianh = tuoiem + 3;
+        let tuoibo = tuoianh * 6;
+        document.write('Tuổi của bố là ' + tuoibo + ' ' + '<br>' + 'Tuổi của anh là'+ ' ' + tuoianh);
+
+    }
+
+</script>
+
+</body>
+</html>
